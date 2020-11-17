@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-	<script src="https://kit.fontawesome.com/2e549c0215.js" crossorigin="anonymous"></script>
-<!--===============================================================================================-->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Login</title>
+
+    <div th:replace="component/asset :: css"></div>
 </head>
+
 <body>
 
 	<div class="limiter">
@@ -28,10 +19,10 @@
 						妙管家管理平台
 					</span>
 
-					<div th:if="${param.error}" class="alert alert-danger">
+					<div th:if="${param.error}" class=".wrap-login100 alert alert-danger">
 						錯誤的帳號或是密碼
 					</div>
-					<div th:if="${param.logout}" class="alert alert-dark">
+					<div th:if="${param.logout}" class=".wrap-login100 alert alert-dark">
 						成功登出
 					</div>
 
@@ -61,25 +52,7 @@
 		</div>
 	</div>
 
-
-
-
-<!--===============================================================================================-->
-	<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
-<!--===============================================================================================-->
-	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
-<!--===============================================================================================-->
-	<script th:src="@{/vendor/select2/select2.min.js}"></script>
-<!--===============================================================================================-->
-	<script th:src="@{/vendor/tilt/tilt.jquery.min.js}"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script th:src="@{/js/main.js}"></script>
+    <div th:replace="component/asset :: script"></div>
 
 </body>
 </html>

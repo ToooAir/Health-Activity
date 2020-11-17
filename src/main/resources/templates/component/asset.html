@@ -1,0 +1,36 @@
+<div th:fragment="css" th:remove="tag">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <!--===============================================================================================-->
+    <script src="https://kit.fontawesome.com/2e549c0215.js" crossorigin="anonymous"></script>
+</div>
+
+<div th:fragment="script" th:remove="tag">
+    <script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/vendor/select2/select2.min.js}"></script>
+    <script th:src="@{/vendor/tilt/tilt.jquery.min.js}"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript">
+		$('.js-tilt').tilt({
+			scale: 1.1
+		});
+	</script>
+    <!--===============================================================================================-->
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                    $(this).toggleClass('active');
+                });
+            });
+    </script>
+    <!--===============================================================================================-->
+    <script th:src="@{/js/main.js}"></script>
+</div>

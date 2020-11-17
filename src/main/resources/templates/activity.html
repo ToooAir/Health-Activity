@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Home</title>
+
+    <div th:replace="component/asset :: css"></div>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div th:replace="component/navbar :: sidenav"></div>
+
+        <!-- Page Content Holder -->
+        <div  id="content">
+
+            <div th:replace="component/navbar :: topnav"></div>
+
+
+            <div class="wrap-activity100">
+
+                <h2>進行中</h2>
+                <a href="#" class="login100-form-btn createActivity">
+                    <i class="far fa-list-alt"></i>
+                    活動建立
+                </a>
+                <div class="wrap-insideActivity">
+                    <h3>標題</h3>
+                    <div class="line"></div>
+                    <p>時間</p>
+                    <div class="line"></div>
+                    <h5>發起人/類型</h5>
+                    <div class="line"></div>
+                    <h5>Date~Date</h5>
+                </div>
+
+                <h2>已過期</h2>
+                <div class="wrap-insideActivity">
+                    <h3>標題</h3>
+                    <div class="line"></div>
+                    <p>時間</p>
+                    <div class="line"></div>
+                    <h5>發起人/類型</h5>
+                    <div class="line"></div>
+                    <h5>Date~Date</h5>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div th:replace="component/asset :: script"></div>
+
+    </body>
+</html>

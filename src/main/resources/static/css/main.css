@@ -180,6 +180,8 @@ iframe {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
+  text-align: center;
+
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -189,6 +191,40 @@ iframe {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 33px 95px 33px 95px;
+}
+
+.wrap-activity100 {
+  background: #cccccc;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px 30px;
+}
+
+.wrap-insideActivity{
+    width: 100%;
+    background: #ffffff;
+    border-radius: 33px;
+    overflow: hidden;
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 16px 0;
 }
 
 /*------------------------------------------------------------------
