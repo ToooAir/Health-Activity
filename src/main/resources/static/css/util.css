@@ -3030,25 +3030,54 @@ a, a:hover, a:focus {
     border-bottom: 1px dashed #ddd;
     margin: 20px 0;
 }
-
-.createActivity{
+.whiteInput{
   font-size: 15px;
   color: #000;
   background: #fff;
+  }
 
+.whiteBtn{
+  font-size: 15px;
+  color: #000;
+  background: #fff;
+  margin:10px 0;
+  }
+
+.whiteBtn:hover{
+  color: #eee;
+  }
+
+.flowBtn{
   max-width: 150px;
   min-width: 150px;
   max-height: 50px;
   min-height: 50px;
   position: fixed;
   z-index: 89;
-  top: 115px;
+  top: 170px;
   right: 50px;
   overflow-x: hidden;
-  }
-.createActivity:hover{
-  color: #eee;
-  }
+  margin:0;
+}
+
+.cancelBtn{
+        position: absolute;
+        top: 50%;
+        right: 25px;
+        transform: translateY(-50%);
+}
+
+.textarea {
+  font-size: 15px;
+  text-align: center;
+  height: auto;
+  padding-top: 15px;
+}
+
+.textarea::-webkit-input-placeholder {
+  text-transform: uppercase;
+  transform:translate3d(0,-4px,0)
+}
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -3184,6 +3213,10 @@ a.article, a.article:hover {
     transition: all 0.3s;
     margin-left:250px;
     margin-top:80px;
+}
+
+.contentHeader{
+    padding:0 0 20px 20px;
 }
 
 #sidebarCollapse {

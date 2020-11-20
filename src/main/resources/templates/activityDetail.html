@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>activity-detail</title>
+
+    <div th:replace="component/asset :: css"></div>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!-- navbar -->
+        <div th:replace="component/navbar :: sidenav"></div>
+        <div th:replace="component/navbar :: topnav"></div>
+
+        <!-- Page Content Holder -->
+        <div  id="content">
+
+            <h2 class="contentHeader">活動標題</h2>
+
+            <div class="row wrap-activity100">
+
+                <div class="row no-gutters col-md-12 my-2">
+                    <h5>發起人：</h5>
+                    <h5>名字</h5>
+                    <h5 class="mx-2 d-none d-md-block">/</h5>
+                    <div class="my-2 col-12 d-md-none"></div>
+                    <h5>類型：</h5>
+                    <h5>類型</h5>
+                </div>
+                <div class="row no-gutters col-md-12 my-2">
+                    <h5>2020/06/20</h5>
+                    <h5 class="mx-2">~</h5>
+                    <h5>2020/06/20</h5>
+                </div>
+                <div class="row no-gutters col-md-12 my-2">
+                    <h5>建立日期：</h5>
+                    <h5>2020/06/20</h5>
+                </div>
+                <div class="line"></div>
+
+                <h2 class="mr-auto col-md-12">活動成員</h2>
+                <div class="col-md-12"></div>
+                <div class="row no-gutters wrap-insideActivity col-md-12">
+                    <h5 class="col-3 col-md-1">編號</h5>
+                    <h5 class="col-6 col-md-3">名字</h5>
+                    <div class="col-3 d-md-none"></div>
+                    <h5 class="col-4 col-md-3">25萬步</h5>
+                    <h5 class="col-5 col-md-3">點數‘距離</h5>
+                    <div class="col-3 col-md-2"></div>
+                    <button type="button" class="cancelBtn"  data-toggle="modal" data-target="#exampleModalCenter" data-name="名字" data-type="資料">
+                        <span><i class="fas fa-times-circle fa-2x"></i></span>
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="component/modal :: delete"></div>
+
+    <div th:replace="component/asset :: script"></div>
+
+    </body>
+</html>

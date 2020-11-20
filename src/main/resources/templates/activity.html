@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Home</title>
+    <title>activity-list</title>
 
     <div th:replace="component/asset :: css"></div>
 </head>
@@ -13,44 +13,70 @@
 
     <div class="wrapper">
 
+        <!-- navbar -->
         <div th:replace="component/navbar :: sidenav"></div>
+        <div th:replace="component/navbar :: topnav"></div>
 
         <!-- Page Content Holder -->
         <div  id="content">
 
-            <div th:replace="component/navbar :: topnav"></div>
+            <a th:href="@{/createActivity}" class="login100-form-btn bg-light text-dark flowBtn">
+                <i class="far fa-list-alt mx-1"></i>
+                活動建立
+            </a>
 
+            <h2 class="contentHeader">活動列表</h2>
 
-            <div class="wrap-activity100">
+            <div class="row no-gutters wrap-activity100">
 
                 <h2>進行中</h2>
-                <a href="#" class="login100-form-btn createActivity">
-                    <i class="far fa-list-alt"></i>
-                    活動建立
-                </a>
-                <div class="wrap-insideActivity">
-                    <h3>標題</h3>
-                    <div class="line"></div>
-                    <p>時間</p>
-                    <div class="line"></div>
-                    <h5>發起人/類型</h5>
-                    <div class="line"></div>
-                    <h5>Date~Date</h5>
-                </div>
 
-                <h2>已過期</h2>
-                <div class="wrap-insideActivity">
-                    <h3>標題</h3>
-                    <div class="line"></div>
-                    <p>時間</p>
-                    <div class="line"></div>
-                    <h5>發起人/類型</h5>
-                    <div class="line"></div>
-                    <h5>Date~Date</h5>
-                </div>
+                <a class="col-12" th:href="@{/activityDetail}">
+                    <div class="row no-gutters wrap-insideActivity">
+                        <h3>活動標題</h3>
+                        <div class="line"></div>
+                        <p>時間</p>
+                        <div class="line"></div>
+                        <h5>發起人：</h5>
+                        <h5>名字</h5>
+                        <h5 class="mx-2 d-none d-md-block">/</h5>
+                        <div class="my-2 col-12 d-md-none"></div>
+                        <h5>類型：</h5>
+                        <h5>類型</h5>
+                        <div class="line"></div>
+                        <h5>2020/06/20</h5>
+                        <div class="col-12 d-md-none w-100"></div>
+                        <h5 class="mx-2">~</h5>
+                        <div class="col-12 d-md-none w-100"></div>
+                        <h5>2020/06/20</h5>
+                    </div>
+                </a>
+
+
+                <h2 class="mt-2">已過期</h2>
+
+                <a class="col-12" th:href="@{/activityDetail}">
+                    <div class="row no-gutters wrap-insideActivity">
+                        <h3>活動標題</h3>
+                        <div class="line"></div>
+                        <p>時間</p>
+                        <div class="line"></div>
+                        <h5>發起人：</h5>
+                        <h5>名字</h5>
+                        <h5 class="mx-2 d-none d-md-block">/</h5>
+                        <div class="my-2 col-12 d-md-none"></div>
+                        <h5>類型：</h5>
+                        <h5>類型</h5>
+                        <div class="line"></div>
+                        <h5>2020/06/20</h5>
+                        <div class="col-12 d-md-none w-100"></div>
+                        <h5 class="mx-2">~</h5>
+                        <div class="col-12 d-md-none w-100"></div>
+                        <h5>2020/06/20</h5>
+                    </div>
+                </a>
 
             </div>
-
         </div>
     </div>
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>user-list</title>
+
+    <div th:replace="component/asset :: css"></div>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!-- navbar -->
+        <div th:replace="component/navbar :: sidenav"></div>
+        <div th:replace="component/navbar :: topnav"></div>
+
+        <!-- Page Content Holder -->
+        <div  id="content">
+
+            <a th:href="@{/createUser}" class="login100-form-btn bg-light text-dark flowBtn">
+                <i class="far fa-list-alt mx-1"></i>
+                新增帳號
+            </a>
+
+            <h2 class="contentHeader">管理者列表</h2>
+
+            <div class="row wrap-activity100">
+
+                <h2>目前</h2>
+                <div class="col-md-12"></div>
+                <div class="wrap-insideActivity col-md-6">
+                    <h3>UserName</h3>
+                    <button type="button" class="cancelBtn" data-toggle="modal" data-target="#exampleModalCenter" data-name="UserName" data-type="帳號">
+                        <span><i class="fas fa-times-circle fa-2x"></i></span>
+                    </button>
+
+                </div>
+                <div class="wrap-insideActivity col-md-6">
+                    <h3>UserName1</h3>
+                    <button type="button" class="cancelBtn" data-toggle="modal" data-target="#exampleModalCenter" data-name="UserName1" data-type="帳號">
+                        <span><i class="fas fa-times-circle fa-2x"></i></span>
+                    </button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="component/modal :: delete"></div>
+
+    <div th:replace="component/asset :: script"></div>
+
+    </body>
+</html>

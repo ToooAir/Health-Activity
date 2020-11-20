@@ -9,8 +9,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @GetMapping("/activity")
-    public String getLoginPage(){
+    public String getActivityPage(){
         return "activity";
+    }
+
+    @GetMapping("/user")
+    public String getUserPage(){
+        return "user";
+    }
+
+    @GetMapping("/createUser")
+    public String getCreateUserPage(){
+        return "createUser";
+    }
+
+    @GetMapping("/createActivity")
+    public String getCreateActivityPage(){
+        return "createActivity";
+    }
+
+    @GetMapping("/activityDetail")
+    public String getActivityDetailPage(){
+        return "activityDetail";
     }
 
 }
