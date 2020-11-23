@@ -36,8 +36,14 @@
               var button = $(event.relatedTarget);
               var name = button.data('name');
               var type = button.data('type');
+              var service = button.data('service');
               var modal = $(this);
               modal.find('#modal-contact').text('確定要刪除 '+name+' 的 '+type+' 嗎？');
+              var href = "/service/" + service + "/delete/" + button.data('id');
+              modal.find('#deleteBtn').unbind("click");
+              modal.find('#deleteBtn').click(function(){
+                    location.href=href;
+              });
             });
 
             startTime = document.getElementById('startTime');

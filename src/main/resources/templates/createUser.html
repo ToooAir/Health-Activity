@@ -26,10 +26,10 @@
 
             <div class="mx-auto">
 
-                <form class="row no-gutters login100-form validate-form" th:action="@{/}" method="POST">
+                <form th:object="${user}" class="row no-gutters login100-form validate-form" th:action="@{/service/user/create}" method="POST">
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate = "請輸入名稱">
-                        <input class="input100 whiteInput" type="text" name="name" id="name" placeholder="管理者名稱">
+                        <input th:field="*{displayName}" class="input100 whiteInput" type="text" name="displayname" id="displayname" placeholder="管理者名稱">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fas fa-signature" aria-hidden="true"></i>
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate="請輸入帳號">
-                        <input class="input100 whiteInput" type="text" name="username" id="username" placeholder="管理者帳號">
+                        <input th:field="*{username}" class="input100 whiteInput" type="text" name="username" id="username" placeholder="管理者帳號">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fas fa-user" aria-hidden="true"></i>
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate="請輸入密碼">
-                        <input class="input100 whiteInput" type="password" name="password" id="password" placeholder="管理者密碼">
+                        <input th:field="*{password}" class="input100 whiteInput" type="password" name="password" id="password" placeholder="管理者密碼">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fa fa-key" aria-hidden="true"></i>

@@ -14,23 +14,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @DynamicUpdate
 @Entity
-@Table(name = "user")
-public class User {
-
+@Table(name = "healthData")
+public class HealthData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    Integer id;
 
-    @Column(nullable = false, unique = true)
-    private String username;
+    @ManyToOne(cascade=CascadeType.REFRESH, fetch=FetchType.LAZY)
+    Member member;
 
-    @Column(nullable = false)
-    private String displayName;
+    @ManyToOne(cascade=CascadeType.REFRESH, fetch=FetchType.LAZY)
+    Activity activity;
 
-    @Column(nullable = false)
-    private String password;
+    Integer distance;
 
-    @Column(nullable = false)
-    String role;
+    Integer steps;
 
+    Integer points;
 }

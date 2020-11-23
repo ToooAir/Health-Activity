@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -14,23 +16,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @DynamicUpdate
 @Entity
-@Table(name = "user")
-public class User {
-
+@Table(name = "member")
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    Integer id;
 
-    @Column(nullable = false, unique = true)
-    private String username;
+    String username;
 
-    @Column(nullable = false)
-    private String displayName;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    String role;
-
+    @OneToMany(cascade=CascadeType.ALL , mappedBy = "member")
+    List<HealthData> healthDatas;
 }

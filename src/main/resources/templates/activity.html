@@ -31,48 +31,24 @@
 
                 <h2>進行中</h2>
 
-                <a class="col-12" th:href="@{/activityDetail}">
+                <a th:each="activity:${activity}" class="col-12" th:href="@{'/activityDetail/'+${activity.id}}">
                     <div class="row no-gutters wrap-insideActivity">
-                        <h3>活動標題</h3>
+                        <h3 th:text="${activity.activityName}">活動標題</h3>
                         <div class="line"></div>
-                        <p>時間</p>
+                        <p th:text="'建立時間：'+${#dates.format(activity.createdDate, 'yyyy-MM-dd')}">時間</p>
                         <div class="line"></div>
                         <h5>發起人：</h5>
-                        <h5>名字</h5>
+                        <h5 th:text="${activity.owner.displayName}">名字</h5>
                         <h5 class="mx-2 d-none d-md-block">/</h5>
                         <div class="my-2 col-12 d-md-none"></div>
                         <h5>類型：</h5>
-                        <h5>類型</h5>
+                        <h5 th:text="${activity.activityType}">類型</h5>
                         <div class="line"></div>
-                        <h5>2020/06/20</h5>
+                        <h5 th:text="${#dates.format(activity.startTime, 'yyyy-MM-dd')}">2020/06/20</h5>
                         <div class="col-12 d-md-none w-100"></div>
                         <h5 class="mx-2">~</h5>
                         <div class="col-12 d-md-none w-100"></div>
-                        <h5>2020/06/20</h5>
-                    </div>
-                </a>
-
-
-                <h2 class="mt-2">已過期</h2>
-
-                <a class="col-12" th:href="@{/activityDetail}">
-                    <div class="row no-gutters wrap-insideActivity">
-                        <h3>活動標題</h3>
-                        <div class="line"></div>
-                        <p>時間</p>
-                        <div class="line"></div>
-                        <h5>發起人：</h5>
-                        <h5>名字</h5>
-                        <h5 class="mx-2 d-none d-md-block">/</h5>
-                        <div class="my-2 col-12 d-md-none"></div>
-                        <h5>類型：</h5>
-                        <h5>類型</h5>
-                        <div class="line"></div>
-                        <h5>2020/06/20</h5>
-                        <div class="col-12 d-md-none w-100"></div>
-                        <h5 class="mx-2">~</h5>
-                        <div class="col-12 d-md-none w-100"></div>
-                        <h5>2020/06/20</h5>
+                        <h5 th:text="${#dates.format(activity.endTime, 'yyyy-MM-dd')}">2020/06/20</h5>
                     </div>
                 </a>
 
