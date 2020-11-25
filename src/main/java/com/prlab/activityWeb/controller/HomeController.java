@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Optional;
 
 @Controller
@@ -30,41 +31,47 @@ public class HomeController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/activity")
-    public String getActivityPage(Activity activity,Authentication authentication, Model model){
-        model.addAttribute("activity",activityRepository.findAll());
-        model.addAttribute("name",userRepository.findByUsername(authentication.getName()).getDisplayName());
+    public String adminGetActivityPage(Activity activity,Authentication authentication, Model model){
+        User user = userRepository.findByUsername(authentication.getName());
+        if(user.getRole() == "admin"){
+            model.addAttribute("activity",activityRepository.findAll());
+        }
+        else{
+            model.addAttribute("activity",activityRepository.findAllByOwner_id(user.getId()));
+        }
         return "activity";
     }
 
+    @RolesAllowed("admin")
     @GetMapping("/user")
     public String getUserPage(User user,Authentication authentication, Model model){
         model.addAttribute("user",userRepository.findAll());
-
-        model.addAttribute("name",userRepository.findByUsername(authentication.getName()).getDisplayName());
         return "user";
     }
 
+    @RolesAllowed("admin")
     @GetMapping("/createUser")
     public String getCreateUserPage(User user,Authentication authentication ,Model model){
-        model.addAttribute("name",userRepository.findByUsername(authentication.getName()).getDisplayName());
         return "createUser";
     }
 
     @GetMapping("/createActivity")
     public String getCreateActivityPage(Activity activity,Authentication authentication ,Model model){
-        model.addAttribute("name",userRepository.findByUsername(authentication.getName()).getDisplayName());
         return "createActivity";
     }
 
     @GetMapping("/activityDetail/{Id}")
-    public String getActivityDetailPage(@PathVariable(value="Id") String Id, Authentication authentication, Model model){
+    public String getActivityDetailPage(@PathVariable(value="Id") String Id, Authentication authentication, Model model) {
         Optional<Activity> activity = activityRepository.findById(Integer.parseInt(Id));
-        activity.ifPresent(foundActivity -> model.addAttribute("activity",foundActivity));
-        model.addAttribute("healthData",healthDataRepository.findAllByActivity_id(Integer.parseInt(Id)));
-
-        model.addAttribute("name",userRepository.findByUsername(authentication.getName()).getDisplayName());
-        return "activityDetail";
+        User user = userRepository.findByUsername(authentication.getName());
+        if (activity.isPresent()) {
+            if (activity.get().getOwner().getId() == user.getId() || user.getRole()=="admin") {
+                model.addAttribute("activity", activity.get());
+                model.addAttribute("healthData", healthDataRepository.findAllByActivity_id(Integer.parseInt(Id)));
+                return "activityDetail";
+            }
+        }
+        return "error";
     }
-
 }
 

@@ -19,26 +19,26 @@
         <p>
             目前登入身份 :
             <i class="fas fa-user" aria-hidden="true"></i>
-            <p th:text="${name}">ADMIN</p>
+            <p th:text="${name}">name</p>
         </p>
 
         <li>
-            <a href="#" aria-expanded="true">
+            <p class="sidebar-header" aria-expanded="true">
                 <i class="fas fa-running"></i>
                  活動設定
-            </a>
+            </p>
             <ul class="collapse show list-unstyled" id="activitySubmenu">
                 <li>
                     <a th:href="@{/activity}">新增活動</a>
                 </li>
             </ul>
         </li>
-        <li>
+        <li th:if="${role}=='admin'">
             <p></p>
-            <a href="#" aria-expanded="true">
+            <p class="sidebar-header" aria-expanded="true">
                 <i class="fas fa-user-circle"></i>
                  帳號管理
-            </a>
+            </p>
             <ul class="collapse show list-unstyled" id="accountSubmenu">
                 <li>
                     <a th:href="@{/user}">新增管理者</a>

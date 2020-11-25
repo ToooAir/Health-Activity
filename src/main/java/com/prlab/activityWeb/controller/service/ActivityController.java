@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/service/activity")
@@ -35,6 +36,10 @@ public class ActivityController {
         try {
             Date startDate  = new SimpleDateFormat("yyyy-MM-dd").parse(requestActivity.getStartTime());
             Date endDate  = new SimpleDateFormat("yyyy-MM-dd").parse(requestActivity.getEndTime());
+            if(startDate.compareTo(endDate) > 0){
+                model.addAttribute("error","活動的結束時間應晚於開始時間");
+                return "error";
+            }
             activity.setStartTime(startDate);
             activity.setEndTime(endDate);
         } catch (ParseException e){
@@ -53,7 +58,14 @@ public class ActivityController {
 
     @GetMapping("/delete/{Id}")
     public String deleteActivity(@PathVariable(value="Id") String Id, Authentication authentication){
-        activityRepository.deleteById(Integer.parseInt(Id));
-        return "redirect:/activity";
+        Optional<Activity> activity = activityRepository.findById(Integer.parseInt(Id));
+        User user = userRepository.findByUsername(authentication.getName());
+        if (activity.isPresent()) {
+            if (activity.get().getOwner().getId() == user.getId() || user.getRole()=="admin") {
+                activityRepository.delete(activity.get());
+                return "redirect:/activity";
+            }
+        }
+        return "error";
     }
 }

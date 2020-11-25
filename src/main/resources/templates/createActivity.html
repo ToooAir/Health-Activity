@@ -26,7 +26,7 @@
 
             <div class="mx-auto">
 
-                <form th:object="${activity}" class="row no-gutters login100-form validate-form" th:action="@{/service/activity/create}" method="POST">
+                <form th:object="${activity}" class="row justify-content-around no-gutters login100-form validate-form" th:action="@{/service/activity/create}" method="POST">
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate = "請輸入名稱">
                         <input th:field="*{activityName}" class="input100 whiteInput" type="text" name="activityName" id="activityName" placeholder="活動名稱">
@@ -58,7 +58,7 @@
                     </span>
                     </div>
 
-                    <div class="wrap-input100 col-md-12">
+                    <div class="wrap-input100 col-md-5">
                         <input th:field="*{startTime}" class="input100 whiteInput" type="text" id="startTime" name="startTime" placeholder="開始時間">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -66,7 +66,7 @@
                     </span>
                     </div>
 
-                    <div class="wrap-input100 col-md-12">
+                    <div class="wrap-input100 col-md-5">
                         <input th:field="*{endTime}" class="input100 whiteInput" type="text" id="endTime" name="endTime" placeholder="結束時間">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">

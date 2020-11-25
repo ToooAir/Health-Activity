@@ -3055,7 +3055,7 @@ a, a:hover, a:focus {
   position: fixed;
   z-index: 89;
   top: 175px;
-  right: 50px;
+  right: 25px;
   overflow-x: hidden;
   margin:0;
 }
@@ -3293,6 +3293,11 @@ a.article, a.article:hover {
     }
     #sidebarCollapse.active span:last-of-type {
         transform: rotate(-45deg) translate(1px, -1px);
+    }
+    .flowBtn{
+      max-width: 80px;
+      min-width: 80px;
+      padding:0 10px;
     }
 
 }

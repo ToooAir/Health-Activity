@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.security.RolesAllowed;
+
 @Controller
 @RequestMapping("/service/user")
 public class UserController {
@@ -22,14 +24,20 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @RolesAllowed("admin")
     @PostMapping("/create")
     public String createUser(Authentication authentication, User user, Model model){
-        user.setRole("user");
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return "redirect:/user";
+        if(userRepository.findByUsername(user.getUsername())==null){
+            user.setRole("user");
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+            return "redirect:/user";
+        }
+        model.addAttribute("error","請勿創建相同帳號的管理員");
+        return "error";
     }
 
+    @RolesAllowed("admin")
     @GetMapping("/delete/{Id}")
     public String deleteUser(@PathVariable(value="Id") String Id, Authentication authentication){
         userRepository.deleteById(Integer.parseInt(Id));

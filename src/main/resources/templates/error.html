@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+
+    <title>錯誤</title>
+</head>
+<body class="p-3 mb-2 bg-light text-black">
+<div class="container justify-content-center w-50 p-3" style="margin-top: 5em;">
+    <div class="alert alert-danger fill-parent">
+        <h1 class="display-5">錯誤</h1>
+        <span th:unless="${error}">你所訪問的頁面並不存在</span>
+        <span th:if="${error}" th:text="${error}">自訂錯誤訊息</span>
+        <br>
+        <span>點擊 <a th:href="@{/activity}">這裡</a> 回到活動頁面</span>
+    </div>
+</div>
+</body>
+</html>
