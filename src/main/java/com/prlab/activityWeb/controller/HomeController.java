@@ -43,18 +43,18 @@ public class HomeController {
         else{
             activities = activityRepository.findAllByOwner_id(user.getId());
         }
+
         Date now = new Date();
         List<Activity> continued = new ArrayList<>();
-        List<Activity> expired = new ArrayList<>();
-        int i = 0;
-        while (i < activities.size()){
-            if(activities.get(i).getEndTime().compareTo(now) > 0){
-                continued.add(activities.get(i));
+        List<Activity> expired = new ArrayList<>();;
+        for(Activity eachActivity:activities){
+            if(eachActivity.getEndTime().compareTo(now) > 0){
+                continued.add(eachActivity);
             }else{
-                expired.add(activities.get(i));
+                expired.add(eachActivity);
             }
-            i++;
         }
+
         model.addAttribute("continued",continued);
         model.addAttribute("expired",expired);
         return "activity";
