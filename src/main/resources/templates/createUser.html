@@ -29,27 +29,30 @@
                 <form th:object="${user}" class="row no-gutters login100-form validate-form" th:action="@{/service/user/create}" method="POST">
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate = "請輸入名稱">
-                        <input th:field="*{displayName}" class="input100 whiteInput" type="text" name="displayname" id="displayname" placeholder="管理者名稱">
+                        <input th:field="*{displayName}" class="input100 whiteInput" type="text" name="displayname" id="displayname" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fas fa-signature" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">管理者顯示名稱</span>
                     </div>
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate="請輸入帳號">
-                        <input th:field="*{username}" class="input100 whiteInput" type="text" name="username" id="username" placeholder="管理者帳號">
+                        <input th:field="*{username}" class="input100 whiteInput" type="text" name="username" id="username" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fas fa-user" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">管理者帳號</span>
                     </div>
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate="請輸入密碼">
-                        <input th:field="*{password}" class="input100 whiteInput" type="password" name="password" id="password" placeholder="管理者密碼">
+                        <input th:field="*{password}" class="input100 whiteInput" type="password" name="password" id="password" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fa fa-key" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">管理者帳號</span>
                     </div>
 
                     <div class="row no-gutters col-md-12">

@@ -29,15 +29,16 @@
                 <form th:object="${activity}" class="row justify-content-around no-gutters login100-form validate-form" th:action="@{/service/activity/create}" method="POST">
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate = "請輸入名稱">
-                        <input th:field="*{activityName}" class="input100 whiteInput" type="text" name="activityName" id="activityName" placeholder="活動名稱">
+                        <input th:field="*{activityName}" class="input100 whiteInput" type="text" name="activityName" id="activityName" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fas fa-signature" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">活動名稱</span>
                     </div>
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate="請選擇類型">
-                        <input th:field="*{activityType}" class="input100 whiteInput" list="typeOption" type="text" name="activityType" id="activityType" placeholder="活動類型">
+                        <input th:field="*{activityType}" class="input100 whiteInput" list="typeOption" type="text" name="activityType" id="activityType" required>
                         <datalist id="typeOption">
                             <option value="快走">快走</option>
                             <option value="慢跑">慢跑</option>
@@ -47,41 +48,46 @@
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fas fa-running" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">活動類型</span>
                     </div>
 
                     <div class="wrap-input100 validate-input col-md-12" data-validate="請輸入地點">
-                        <input th:field="*{location}" class="input100 whiteInput" type="text" name="location" id="location" placeholder="活動地點">
+                        <input th:field="*{location}" class="input100 whiteInput" type="text" name="location" id="location" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fas fa-search-location" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">活動地點</span>
                     </div>
 
                     <div class="wrap-input100 col-md-5">
-                        <input th:field="*{startTime}" class="input100 whiteInput" type="text" id="startTime" name="startTime" placeholder="開始時間">
+                        <input th:field="*{startTime}" class="input100 whiteInput" type="text" id="startTime" name="startTime" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="far fa-clock" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">開始時間</span>
                     </div>
 
                     <div class="wrap-input100 col-md-5">
-                        <input th:field="*{endTime}" class="input100 whiteInput" type="text" id="endTime" name="endTime" placeholder="結束時間">
+                        <input th:field="*{endTime}" class="input100 whiteInput" type="text" id="endTime" name="endTime" required>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fas fa-clock" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">結束時間</span>
                     </div>
 
 
 
                     <div class="wrap-input100 col-md-12">
-                        <textarea th:field="*{rule}" class="textarea input100 whiteInput" name="rule" id="rule" rows="6" placeholder="活動規則"></textarea>
+                        <textarea th:field="*{rule}" class="textarea input100 whiteInput" name="rule" id="rule" rows="6" required></textarea>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fas fa-ruler-vertical" aria-hidden="true"></i>
-                    </span>
+                        </span>
+                        <span class="floating-label">活動規則</span>
                     </div>
 
 
