@@ -32,6 +32,12 @@
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
                 return false;
             }
+        }else if($(input).attr('type') == 'date' && $(input).attr('id') == 'startTime'){
+            if(Date.parse($("input#startTime").val()) > Date.parse($("input#endTime").val())){
+                var thisAlert = $(input).parent();
+                $(thisAlert).attr("data-validate","開始時間應比結束時間早");
+                return false;
+            }
         }
         else {
             if($(input).val().trim() == ''){
