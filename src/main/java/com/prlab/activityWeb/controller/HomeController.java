@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.security.RolesAllowed;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -33,12 +36,27 @@ public class HomeController {
     @GetMapping("/activity")
     public String adminGetActivityPage(Activity activity,Authentication authentication, Model model){
         User user = userRepository.findByUsername(authentication.getName());
+        List<Activity> activities;
         if(user.getRole() == "admin"){
-            model.addAttribute("activity",activityRepository.findAll());
+            activities = activityRepository.findAll();
         }
         else{
-            model.addAttribute("activity",activityRepository.findAllByOwner_id(user.getId()));
+            activities = activityRepository.findAllByOwner_id(user.getId());
         }
+        Date now = new Date();
+        List<Activity> continued = new ArrayList<>();
+        List<Activity> expired = new ArrayList<>();
+        int i = 0;
+        while (i < activities.size()){
+            if(activities.get(i).getEndTime().compareTo(now) > 0){
+                continued.add(activities.get(i));
+            }else{
+                expired.add(activities.get(i));
+            }
+            i++;
+        }
+        model.addAttribute("continued",continued);
+        model.addAttribute("expired",expired);
         return "activity";
     }
 
