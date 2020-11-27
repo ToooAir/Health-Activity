@@ -91,10 +91,9 @@ public class ActivityController {
                 expired.add(eachActivity);
             }
         }
-        if(continued.size()>=1)
-            model.addAttribute("continued",continued);
-        if (expired.size()>=1)
-            model.addAttribute("expired",expired);
+
+        if(continued.size()>=1) model.addAttribute("continued",continued);
+        if (expired.size()>=1) model.addAttribute("expired",expired);
 
         return "activity";
     }

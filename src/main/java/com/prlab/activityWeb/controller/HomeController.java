@@ -55,24 +55,23 @@ public class HomeController {
                 expired.add(eachActivity);
             }
         }
-        if(continued.size()>=1)
-        model.addAttribute("continued",continued);
-        if (expired.size()>=1)
-        model.addAttribute("expired",expired);
+
+        if(continued.size()>=1) model.addAttribute("continued",continued);
+        if (expired.size()>=1) model.addAttribute("expired",expired);
 
         return "activity";
     }
 
     @RolesAllowed("admin")
     @GetMapping("/user")
-    public String getUserPage(User user,Authentication authentication, Model model){
+    public String getUserPage(User user, SearchString searchString, Authentication authentication, Model model){
         model.addAttribute("user",userRepository.findAll());
         return "user";
     }
 
     @RolesAllowed("admin")
     @GetMapping("/createUser")
-    public String getCreateUserPage(User user,Authentication authentication ,Model model){
+    public String getCreateUserPage(User user, Authentication authentication, Model model){
         return "createUser";
     }
 

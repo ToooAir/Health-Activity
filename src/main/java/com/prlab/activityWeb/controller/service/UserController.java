@@ -1,5 +1,6 @@
 package com.prlab.activityWeb.controller.service;
 
+import com.prlab.activityWeb.model.DTO.SearchString;
 import com.prlab.activityWeb.model.User;
 import com.prlab.activityWeb.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.security.RolesAllowed;
+import java.util.List;
 
 @Controller
 @RequestMapping("/service/user")
@@ -42,5 +44,15 @@ public class UserController {
     public String deleteUser(@PathVariable(value="Id") String Id, Authentication authentication){
         userRepository.deleteById(Integer.parseInt(Id));
         return "redirect:/user";
+    }
+
+    @RolesAllowed("admin")
+    @PostMapping("/search")
+    public String searchUser(SearchString searchString, Authentication authentication, Model model){
+        List<User> searchUser = userRepository.findByUsernameContainingOrDisplayNameContaining(searchString.getKeyword(),searchString.getKeyword());
+
+        if (searchUser.size() >= 1) model.addAttribute("user",searchUser);
+
+        return "user";
     }
 }

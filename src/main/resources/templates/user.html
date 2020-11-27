@@ -28,14 +28,26 @@
                 <i class="far fa-list-alt mx-1"></i>新增
             </a>
 
-            <h2 class="contentHeader">管理者列表</h2>
+            <div class="row no-gutters">
+                <h2 class="contentHeader">管理者列表</h2>
+                <form class="searchBar col-md-5 ml-auto"  th:action="@{/service/user/search}" th:object="${searchString}" method="POST">
+                    <div class="wrap-input100">
+                        <input th:field="*{keyword}" class="input100" type="text" id="searchBar" name="searchBar" required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                        <span class="floating-label">管理者搜尋</span>
+                    </div>
+                </form>
+            </div>
 
             <div class="row wrap-activity100">
 
 
-                <h3>目前帳號</h3>
+                <h3 th:if="${user}">目前帳號</h3>
 
-                <div class="col-12 col-md-12">
+                <div class="col-12 col-md-12"></div>
 
                 <div th:each="user:${user}" class="wrap-insideActivity row no-gutters col-md-12">
                     <h4>名稱：</h4>
@@ -49,14 +61,7 @@
                     </button>
                 </div>
 
-<!--                <div class="col-md-12"></div>-->
-<!--                <div th:each="user:${user}" class="wrap-insideActivity col-md-12">-->
-<!--                    <h3 th:text="${user.displayName}+' / '+${user.username}">UserName</h3>-->
-<!--                    <button type="button" class="cancelBtn" data-toggle="modal" data-target="#exampleModalCenter" th:attr="data-name=${user.displayName},data-id=${user.id}" data-service="user"  data-type="帳號">-->
-<!--                        <span><i class="fas fa-times-circle fa-2x"></i></span>-->
-<!--                    </button>-->
-
-<!--                </div>-->
+                <h3 th:unless="${user}">查無任何相關管理者</h3>
 
             </div>
         </div>
