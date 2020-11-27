@@ -32,7 +32,7 @@
 
             <div class="row no-gutters wrap-activity100" style="margin:0 -15px;">
 
-                <h2>進行中</h2>
+                <h2 th:if="${continued}">進行中</h2>
                 <a th:each="activity:${continued}" class="col-12" th:href="@{'/activityDetail/'+${activity.id}}">
                     <div class="row no-gutters wrap-insideActivity">
                         <h3 th:text="${activity.activityName}">活動標題</h3>
@@ -54,7 +54,7 @@
                     </div>
                 </a>
 
-                <h2>已結束</h2>
+                <h2 th:if="${expired}">已結束</h2>
                 <a th:each="activity:${expired}" class="col-12" th:href="@{'/activityDetail/'+${activity.id}}">
                     <div class="row no-gutters wrap-insideActivity expired">
                         <h3 th:text="${activity.activityName}">活動標題</h3>
