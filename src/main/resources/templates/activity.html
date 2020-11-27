@@ -28,7 +28,20 @@
                 <i class="far fa-list-alt mx-1"></i>建立
             </a>
 
-            <h2 class="contentHeader">活動列表</h2>
+            <div class="row no-gutters">
+                <h2 class="contentHeader">活動列表</h2>
+                <form class="searchBar col-md-5 ml-auto"  th:action="@{/service/activity/search}" th:object="${searchString}" method="POST">
+                    <div class="wrap-input100">
+                        <input th:field="*{keyword}" class="input100" type="text" id="searchBar" name="searchBar" required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                        <span class="floating-label">活動搜尋</span>
+                    </div>
+                </form>
+            </div>
+
 
             <div class="row no-gutters wrap-activity100" style="margin:0 -15px;">
 
@@ -75,6 +88,8 @@
                         <h5 th:text="${#dates.format(activity.endTime, 'yyyy-MM-dd')}">2020/06/20</h5>
                     </div>
                 </a>
+
+                <h3 th:unless="${continued} or ${expired}">查無任何相關活動</h3>
 
             </div>
         </div>

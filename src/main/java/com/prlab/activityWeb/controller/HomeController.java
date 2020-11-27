@@ -1,6 +1,7 @@
 package com.prlab.activityWeb.controller;
 
 import com.prlab.activityWeb.model.Activity;
+import com.prlab.activityWeb.model.DTO.SearchString;
 import com.prlab.activityWeb.model.User;
 import com.prlab.activityWeb.model.repository.ActivityRepository;
 import com.prlab.activityWeb.model.repository.HealthDataRepository;
@@ -34,7 +35,7 @@ public class HomeController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/activity")
-    public String adminGetActivityPage(Activity activity,Authentication authentication, Model model){
+    public String adminGetActivityPage(Activity activity, SearchString searchString, Authentication authentication, Model model){
         User user = userRepository.findByUsername(authentication.getName());
         List<Activity> activities;
         if(user.getRole() == "admin"){

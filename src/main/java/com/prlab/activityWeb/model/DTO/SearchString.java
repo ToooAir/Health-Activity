@@ -9,12 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestActivity {
-    String activityName;
-    String location;
-    String activityType;
-    String startTime;
-    String endTime;
-    String rule;
+public class SearchString {
+    String Keyword;
 }
 

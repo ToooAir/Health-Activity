@@ -2,6 +2,7 @@ package com.prlab.activityWeb.controller.service;
 
 import com.prlab.activityWeb.model.Activity;
 import com.prlab.activityWeb.model.DTO.RequestActivity;
+import com.prlab.activityWeb.model.DTO.SearchString;
 import com.prlab.activityWeb.model.User;
 import com.prlab.activityWeb.model.repository.ActivityRepository;
 import com.prlab.activityWeb.model.repository.UserRepository;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -65,5 +68,34 @@ public class ActivityController {
             }
         }
         return "error";
+    }
+
+    @PostMapping("/search")
+    public String searchActivity(SearchString searchString, Authentication authentication, Model model){
+        User user = userRepository.findByUsername(authentication.getName());
+        List<Activity> activities;
+        if(user.getRole() == "admin"){
+            activities = activityRepository.findByActivityNameContaining(searchString.getKeyword());
+        }
+        else{
+            activities = activityRepository.findByOwner_idAndActivityNameContaining(user.getId(),searchString.getKeyword());
+        }
+
+        Date now = new Date();
+        List<Activity> continued = new ArrayList<>();
+        List<Activity> expired = new ArrayList<>();;
+        for(Activity eachActivity:activities){
+            if(eachActivity.getEndTime().compareTo(now) > 0){
+                continued.add(eachActivity);
+            }else{
+                expired.add(eachActivity);
+            }
+        }
+        if(continued.size()>=1)
+            model.addAttribute("continued",continued);
+        if (expired.size()>=1)
+            model.addAttribute("expired",expired);
+
+        return "activity";
     }
 }

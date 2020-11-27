@@ -3079,6 +3079,11 @@ a, a:hover, a:focus {
   transform:translate3d(0,-4px,0)
 }
 
+.searchBar{
+    transform: translateY(8px);
+    margin-top: -22px;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
