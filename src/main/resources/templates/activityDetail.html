@@ -17,10 +17,10 @@
         <div th:replace="component/navbar :: sidenav"></div>
         <div th:replace="component/navbar :: topnav"></div>
 
-        <button type="button" class="login100-form-btn btn-outline-danger bg-danger flowBtn" data-toggle="modal" data-target="#exampleModalCenter" th:attr="data-name=${activity.activityName},data-id=${activity.id}" data-service="activity"  data-type="活動">
+        <button type="button" class="login100-form-btn btn-outline-danger bg-danger flowBtn deleteBtn" data-toggle="modal" data-target="#exampleModalCenter" th:attr="data-name=${activity.activityName},data-id=${activity.id}" data-service="activity"  data-type="活動">
             <i class="fas fa-times-circle"></i>刪除活動
         </button>
-        <button type="button" class="login100-form-btn btn-outline-danger bg-danger flowBtn col-12 d-md-none" data-toggle="modal" data-target="#exampleModalCenter" th:attr="data-name=${activity.activityName},data-id=${activity.id}" data-service="activity"  data-type="活動">
+        <button type="button" class="login100-form-btn btn-outline-danger bg-danger flowBtn deleteBtn col-12 d-md-none" data-toggle="modal" data-target="#exampleModalCenter" th:attr="data-name=${activity.activityName},data-id=${activity.id}" data-service="activity"  data-type="活動">
             <i class="fas fa-times-circle"></i>刪除
         </button>
 

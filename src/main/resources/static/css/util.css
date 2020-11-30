@@ -3052,8 +3052,8 @@ a, a:hover, a:focus {
   min-width: 150px;
   max-height: 50px;
   min-height: 50px;
-  position: fixed;
-  z-index: 89;
+  position: absolute;
+  z-index: 29;
   top: 175px;
   right: 25px;
   overflow-x: hidden;
@@ -3082,6 +3082,10 @@ a, a:hover, a:focus {
 .searchBar{
     transform: translateY(8px);
     margin-top: -22px;
+}
+
+.deleteBtn{
+    transform:translateY(0) !important;
 }
 
 /* ---------------------------------------------------
@@ -3303,6 +3307,7 @@ a.article, a.article:hover {
       max-width: 80px;
       min-width: 80px;
       padding:0 10px;
+      transform:translateY(60px);
     }
 
 }
